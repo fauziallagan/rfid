@@ -1,7 +1,7 @@
 
-# Proyek Sistem Komputer Universitas Gunadarma
+# JUDUL PROYEK
 
-"Sistem Parameter Lingkungan Tanaman Cabai Pada Rumah Kaca Dan Notifikasi Kerusakan Dini Berbasis IoT"
+"JUDUL"
 
 # Schematic
 ![Logo](https://github.com/fauziallagan/rfid/blob/master/schematic.png)
