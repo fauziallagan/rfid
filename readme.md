@@ -8,7 +8,7 @@
 
 ## Documentation
 
-#### Wemos D1 R1 ESP-8266 Pinout
+#### Wemos D1 R1 Pinout
 
 | PIN | Type     | Description                |
 | :-------- | :------- | :------------------------- |
@@ -16,7 +16,7 @@
 | `` | `` |  |
 | `` | `` | |
 | `` | `` | |
-#### Sensor RFID Pinout
+#### Example Code RFID 
 
 ```C++
 MFRC522 mfrc522(pinSDA, pinRST);
@@ -95,23 +95,32 @@ void rfid()
 | `-`      | `-` | - |
 
 
-#### Sensor DHT Pinout
+#### Example Vibration Sensor Code
 
 ```c++
-  DHT dht(D5, DHT22);
-  int ldrSensors = A0;           // LDR instance named ldr, A0
-  int ledTesting = D6;          // declare LED for testing
-  int nilai;                   // count LDR
+  void vibration()
+{
+  vibrationSensorState = digitalRead(vibrationSensorPin);
+  if (vibrationSensorState == 1)
+  { // Jika ada getaran di sensor = HIGH
+    Serial.println("Getaran Terdeteksi!");
+    digitalWrite(buzzPin, LOW);
+    delay(1000);
+    digitalWrite(buzzPin, HIGH);
+    delay(1000);
+  }
+}
 ```
 
 | Parameter | Description                |
 | :-------- | :------------------------- |
-| `DHT` |dht(pin,type)|
+| `` ||
 
 
 #### Get all items
 
-```http
+```c++
+Coming Soon :)
   -
 ```
 
