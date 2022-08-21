@@ -25,15 +25,22 @@ byte readCard[4];
 String MasterTag = "3B10691D"; // ID terdaftar
 String tagID = "";
 
+// relay
+const int relay = 10;
+
 // koneksi wifi + blynk cloud
 char auth[] = BLYNK_AUTH_TOKEN;
 char ssid[] = "allagan";
 char pass[] = "allagankingdom";
 
+// virtual pin untuk LCD
+WidgetLCD lcd(V1);
+
 void setup()
 {
-  Blynk.begin(auth, ssid, pass);      // inisialisasi koneksi wifi
-  pinMode(buzzPin, OUTPUT);           // set buzzer sebagai output
+  Blynk.begin(auth, ssid, pass); // inisialisasi koneksi wifi
+  pinMode(buzzPin, OUTPUT);      // set buzzer sebagai output
+  pinMode(relay, OUTPUT);
   pinMode(vibrationSensorPin, INPUT); // Jadikan Vibration sensor sebagai input
   Serial.begin(9600);
   SPI.begin();
@@ -42,13 +49,38 @@ void setup()
   Serial.println(" Security System ");
 
   Serial.println("Tap Your Card!");
+  lcd.print(0, 0, "Security System");
+  lcd.print(1, 0, "Tap Your Card!");
 }
 void loop()
 {
   Blynk.run();                 // menjalankan blynk
   digitalWrite(buzzPin, HIGH); // set HIGH karena buzzer active LOW
-  vibration();                 // fungsi vibration
-  rfid();                      // fungsi rfid
+  vibrationSensorState = digitalRead(vibrationSensorPin);
+  // vibration(); // fungsi vibration
+  // rfid();      // fungsi rfid
+
+  lcd.clear();
+
+  if (vibrationSensorState == LOW)
+  {
+
+    Serial.println("Silahkan Tempelkan kartu!");
+    lcd.print(1, 0, "Silahkan Tempelkan kartu");
+    rfid(); // fungsi rfid
+  }
+  else
+  {
+    Serial.println("Getaran Terdeteksi!");
+    lcd.print(0, 0, "Getaran Terdeteksi!");
+    digitalWrite(buzzPin, LOW);
+    delay(1000);
+    digitalWrite(buzzPin, HIGH);
+    delay(1000);
+    Serial.println("Silahkan Tempelkan kartu!");
+    lcd.print(1, 0, "Silahkan Tempelkan kartu");
+    rfid(); // fungsi rfid
+  }
 }
 
 boolean getID() // fungsi untuk membaca kartu rfid
@@ -95,6 +127,7 @@ void rfid()
       Serial.print(" ID : ");
       Serial.println(tagID);
       Serial.println("Selamat Datang\n");
+      digitalWrite(relay, LOW);
     }
     else
     {
@@ -106,6 +139,7 @@ void rfid()
       Serial.print(" ID : ");
       Serial.println(tagID);
       Serial.println("Kartu Tidak Terdaftar!\n");
+      digitalWrite(relay, HIGH);
     }
 
     // Serial.print(" ID : ");
@@ -116,7 +150,7 @@ void rfid()
 }
 void vibration()
 {
-  vibrationSensorState = digitalRead(vibrationSensorPin);
+
   if (vibrationSensorState == 1)
   { // Jika ada getaran di sensor = HIGH
     Serial.println("Getaran Terdeteksi!");
@@ -125,4 +159,8 @@ void vibration()
     digitalWrite(buzzPin, HIGH);
     delay(1000);
   }
+}
+
+void relay()
+{
 }
