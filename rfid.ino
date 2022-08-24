@@ -54,7 +54,7 @@ void setup()
 void loop()
 {
   // Blynk.run();                 // menjalankan blynk
-  digitalWrite(buzzPin, HIGH); // set HIGH karena buzzer active LOW
+  digitalWrite(buzzPin, LOW); // set HIGH karena buzzer active LOW
   // vibrationSensorState = digitalRead(vibrationSensorPin);
   // // vibration(); // fungsi vibration
   // // rfid();      // fungsi rfid
