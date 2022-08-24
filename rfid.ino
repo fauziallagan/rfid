@@ -53,33 +53,34 @@ void setup()
 }
 void loop()
 {
-  Blynk.run();                 // menjalankan blynk
-  digitalWrite(buzzPin, HIGH); // set HIGH karena buzzer active LOW
-  vibrationSensorState = digitalRead(vibrationSensorPin);
-  // vibration(); // fungsi vibration
-  // rfid();      // fungsi rfid
+  // Blynk.run();                 // menjalankan blynk
+  // digitalWrite(buzzPin, HIGH); // set HIGH karena buzzer active LOW
+  // vibrationSensorState = digitalRead(vibrationSensorPin);
+  // // vibration(); // fungsi vibration
+  // // rfid();      // fungsi rfid
 
-  lcd.clear();
+  // lcd.clear();
 
-  if (vibrationSensorState == LOW)
-  {
+  // if (vibrationSensorState == LOW)
+  // {
 
-    Serial.println("Silahkan Tempelkan kartu!");
-    lcd.print(1, 0, "Silahkan Tempelkan kartu");
-    rfid(); // fungsi rfid
-  }
-  else
-  {
-    Serial.println("Getaran Terdeteksi!");
-    lcd.print(0, 0, "Getaran Terdeteksi!");
-    digitalWrite(buzzPin, LOW);
-    delay(1000);
-    digitalWrite(buzzPin, HIGH);
-    delay(1000);
-    Serial.println("Silahkan Tempelkan kartu!");
-    lcd.print(1, 0, "Silahkan Tempelkan kartu");
-    rfid(); // fungsi rfid
-  }
+  //   Serial.println("Silahkan Tempelkan kartu!");
+  //   lcd.print(1, 0, "Silahkan Tempelkan kartu");
+  //   rfid(); // fungsi rfid
+  // }
+  // else
+  // {
+  //   Serial.println("Getaran Terdeteksi!");
+  //   lcd.print(0, 0, "Getaran Terdeteksi!");
+  //   digitalWrite(buzzPin, LOW);
+  //   delay(1000);
+  //   digitalWrite(buzzPin, HIGH);
+  //   delay(1000);
+  //   Serial.println("Silahkan Tempelkan kartu!");
+  //   lcd.print(1, 0, "Silahkan Tempelkan kartu");
+  //   rfid(); // fungsi rfid
+  // }
+  relayTesting();
 }
 
 boolean getID() // fungsi untuk membaca kartu rfid
