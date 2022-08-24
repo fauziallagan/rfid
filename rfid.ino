@@ -23,15 +23,15 @@ const int pinSDA = 4; // pin SDA  module RC522
 MFRC522 mfrc522(pinSDA, pinRST);
 byte readCard[4];
 String MasterTag = "3B10691D"; // ID terdaftar
-String tagID = "";
+String tagID = "";             // variabel kosong untuk menampung tagID
 
 // relay
-const int relay = 10;
+const int relay = 11;
 
 // koneksi wifi + blynk cloud
 char auth[] = BLYNK_AUTH_TOKEN;
-char ssid[] = "allagan";
-char pass[] = "allagankingdom";
+char ssid[] = "YOUR_SSID";
+char pass[] = "YOUR_PASSWORD";
 
 // virtual pin untuk LCD
 WidgetLCD lcd(V1);
@@ -47,7 +47,6 @@ void setup()
   mfrc522.PCD_Init(); // inisialisasi rfid
   // Serial.println("Dekatkan Tag RFID (Dapat berupa kartu atau gantungan kunci) ke RFID reader");
   Serial.println(" Security System ");
-
   Serial.println("Tap Your Card!");
   lcd.print(0, 0, "Security System");
   lcd.print(1, 0, "Tap Your Card!");
@@ -127,6 +126,8 @@ void rfid()
       Serial.print(" ID : ");
       Serial.println(tagID);
       Serial.println("Selamat Datang\n");
+      digitalWrite(relay, HIGH);
+      delay(1000);
       digitalWrite(relay, LOW);
     }
     else
@@ -139,6 +140,8 @@ void rfid()
       Serial.print(" ID : ");
       Serial.println(tagID);
       Serial.println("Kartu Tidak Terdaftar!\n");
+      digitalWrite(relay, LOW);
+      delay(1000);
       digitalWrite(relay, HIGH);
     }
 
@@ -163,4 +166,7 @@ void vibration()
 
 void relay()
 {
+  digitalWrite(relay, HIGH);
+  delay(1000);
+  digitalWrite(relay, LOW);
 }
