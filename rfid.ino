@@ -164,7 +164,7 @@ void vibration()
   }
 }
 
-void relay()
+void relayTesting()
 {
   digitalWrite(relay, HIGH);
   delay(1000);
