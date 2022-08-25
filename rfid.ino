@@ -29,9 +29,9 @@ String tagID = "";             // variabel kosong untuk menampung tagID
 int relay = D11;
 
 // koneksi wifi + blynk cloud
-char auth[] = BLYNK_AUTH_TOKEN;
-char ssid[] = "YOUR_SSID";
-char pass[] = "YOUR_PASSWORD";
+// char auth[] = BLYNK_AUTH_TOKEN;
+// char ssid[] = "YOUR_SSID";
+// char pass[] = "YOUR_PASSWORD";
 
 // virtual pin untuk LCD
 WidgetLCD lcd(V1);
