@@ -1,7 +1,7 @@
 // koneksi ke blynk
 #define BLYNK_TEMPLATE_ID "TMPL6Fyoj83m"
 #define BLYNK_DEVICE_NAME "PI"
-#define BLYNK_AUTH_TOKEN "h16kOyMh1L4Xu-5985_NOaoMG-5jNAPZ"
+#define BLYNK_AUTH_TOKEN "h16kOyMh1L4Xu-5985_NOaoMG-5jNAPZ" // Authentication
 #define BLYNK_PRINT Serial
 
 // Library yang digunain
@@ -26,7 +26,7 @@ String MasterTag = "3B10691D"; // ID terdaftar
 String tagID = "";             // variabel kosong untuk menampung tagID
 
 // relay
-const int relay = 11;
+int relay = D11;
 
 // koneksi wifi + blynk cloud
 char auth[] = BLYNK_AUTH_TOKEN;
@@ -54,13 +54,10 @@ void setup()
 void loop()
 {
   // Blynk.run();                 // menjalankan blynk
-  tone(buzzPin, 1000); // Send 1KHz sound signal...
-  delay(1000);         // ...for 1 sec
-  noTone(buzzPin);     // Stop sound...
-  delay(1000);         // ...for 1sec
+
   // vibrationSensorState = digitalRead(vibrationSensorPin);
-  // // vibration(); // fungsi vibration
-  // // rfid();      // fungsi rfid
+  // vibration(); // fungsi vibration
+  // rfid();      // fungsi rfid
 
   // lcd.clear();
 
@@ -83,7 +80,7 @@ void loop()
   //   lcd.print(1, 0, "Silahkan Tempelkan kartu");
   //   rfid(); // fungsi rfid
   // }
-  relayTesting();
+  rfid();
 }
 
 boolean getID() // fungsi untuk membaca kartu rfid
@@ -130,9 +127,10 @@ void rfid()
       Serial.print(" ID : ");
       Serial.println(tagID);
       Serial.println("Selamat Datang\n");
-      digitalWrite(relay, HIGH);
-      delay(1000);
       digitalWrite(relay, LOW);
+      delay(1000);
+      digitalWrite(relay, HIGH);
+      delay(10000);
     }
     else
     {
