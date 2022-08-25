@@ -110,58 +110,58 @@ void loop()
 
 
 */
-void rfid()
-{
+// void rfid()
+// {
 
-  while (getID())
-  {
+//   while (getID())
+//   {
 
-    if (tagID == MasterTag)
-    {
+//     if (tagID == MasterTag)
+//     {
 
-      Serial.println(" Access Diterima !");
+//       Serial.println(" Access Diterima !");
 
-      // code
-      digitalWrite(buzzPin, HIGH); // aktif low
-      delay(1000);
-      Serial.print(" ID : ");
-      Serial.println(tagID);
-      Serial.println("Selamat Datang\n");
-      digitalWrite(relay, HIGH);
-      delay(1000);
-    }
-    else
-    {
-      Serial.println(" Access Ditolak!!");
-      digitalWrite(buzzPin, HIGH);
-      delay(1000);
-      digitalWrite(buzzPin, LOW);
-      delay(1000);
-      Serial.print(" ID : ");
-      Serial.println(tagID);
-      Serial.println("Kartu Tidak Terdaftar!\n");
-      digitalWrite(relay, LOW);
-      delay(1000);
-    }
+//       // code
+//       digitalWrite(buzzPin, HIGH); // aktif low
+//       delay(1000);
+//       Serial.print(" ID : ");
+//       Serial.println(tagID);
+//       Serial.println("Selamat Datang\n");
+//       digitalWrite(relay, HIGH);
+//       delay(1000);
+//     }
+//     else
+//     {
+//       Serial.println(" Access Ditolak!!");
+//       digitalWrite(buzzPin, HIGH);
+//       delay(1000);
+//       digitalWrite(buzzPin, LOW);
+//       delay(1000);
+//       Serial.print(" ID : ");
+//       Serial.println(tagID);
+//       Serial.println("Kartu Tidak Terdaftar!\n");
+//       digitalWrite(relay, LOW);
+//       delay(1000);
+//     }
 
-    // Serial.print(" ID : ");
-    // Serial.println(tagID);
+//     // Serial.print(" ID : ");
+//     // Serial.println(tagID);
 
-    // delay(2000);
-  }
-}
-void vibration()
-{
+//     // delay(2000);
+//   }
+// }
+// void vibration()
+// {
 
-  if (vibrationSensorState == 1)
-  { // Jika ada getaran di sensor = HIGH
-    Serial.println("Getaran Terdeteksi!");
-    digitalWrite(buzzPin, LOW);
-    delay(1000);
-    digitalWrite(buzzPin, HIGH);
-    delay(1000);
-  }
-}
+//   if (vibrationSensorState == 1)
+//   { // Jika ada getaran di sensor = HIGH
+//     Serial.println("Getaran Terdeteksi!");
+//     digitalWrite(buzzPin, LOW);
+//     delay(1000);
+//     digitalWrite(buzzPin, HIGH);
+//     delay(1000);
+//   }
+// }
 
 void relayTesting()
 {
