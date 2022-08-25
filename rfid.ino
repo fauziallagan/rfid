@@ -5,25 +5,25 @@
 // #define BLYNK_PRINT Serial
 
 // Library yang digunain
-#include <SPI.h>
-#include <MFRC522.h>
-#include <ESP8266WiFi.h>
+// #include <SPI.h>
+// #include <MFRC522.h>
+// #include <ESP8266WiFi.h>
 // #include <BlynkSimpleEsp8266.h>
 
 // passive buzzer
-#define buzzPin D8 // Buzzer dihubungkan ke pin D8
+// #define buzzPin D8 // Buzzer dihubungkan ke pin D8
 
-// sensor getaran
-#define vibrationSensorPin D2 // Vibration Sensor di hubungkan ke Pin D2
-int vibrationSensorState = 0; // Status saat pertama mulai = 0
+// // sensor getaran
+// #define vibrationSensorPin D2 // Vibration Sensor di hubungkan ke Pin D2
+// int vibrationSensorState = 0; // Status saat pertama mulai = 0
 
 // RFID
-const int pinRST = 5; // pin RST  module RC522
-const int pinSDA = 4; // pin SDA  module RC522
-MFRC522 mfrc522(pinSDA, pinRST);
-byte readCard[4];
-String MasterTag = "3B10691D"; // ID terdaftar
-String tagID = "";             // variabel kosong untuk menampung tagID
+// const int pinRST = 5; // pin RST  module RC522
+// const int pinSDA = 4; // pin SDA  module RC522
+// MFRC522 mfrc522(pinSDA, pinRST);
+// byte readCard[4];
+// String MasterTag = "3B10691D"; // ID terdaftar
+// String tagID = "";             // variabel kosong untuk menampung tagID
 
 // relay
 int relay = D11;
