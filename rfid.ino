@@ -26,7 +26,7 @@ String MasterTag = "3B10691D"; // ID terdaftar
 String tagID = "";             // variabel kosong untuk menampung tagID
 
 // relay
-int relay = D11;
+#define relay D11
 
 // koneksi wifi + blynk cloud
 char auth[] = BLYNK_AUTH_TOKEN;
@@ -38,8 +38,8 @@ WidgetLCD lcd(V1);
 
 void setup()
 {
-  Blynk.begin(auth, ssid, pass); // inisialisasi koneksi wifi
-  pinMode(buzzPin, OUTPUT);      // set buzzer sebagai output
+  // Blynk.begin(auth, ssid, pass); // inisialisasi koneksi wifi
+  pinMode(buzzPin, OUTPUT); // set buzzer sebagai output
   pinMode(relay, OUTPUT);
   pinMode(vibrationSensorPin, INPUT); // Jadikan Vibration sensor sebagai input
   Serial.begin(9600);
@@ -168,4 +168,5 @@ void relayTesting()
   digitalWrite(relay, HIGH);
   delay(1000);
   digitalWrite(relay, LOW);
+  delay(1000);
 }
