@@ -80,7 +80,7 @@ void loop()
   //   lcd.print(1, 0, "Silahkan Tempelkan kartu");
   //   rfid(); // fungsi rfid
   // }
-  rfid();
+  relayTesting();
 }
 
 boolean getID() // fungsi untuk membaca kartu rfid
