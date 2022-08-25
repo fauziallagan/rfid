@@ -127,8 +127,6 @@ void rfid()
       Serial.print(" ID : ");
       Serial.println(tagID);
       Serial.println("Selamat Datang\n");
-      digitalWrite(relay, LOW);
-      delay(1000);
       digitalWrite(relay, HIGH);
       delay(10000);
     }
@@ -143,8 +141,7 @@ void rfid()
       Serial.println(tagID);
       Serial.println("Kartu Tidak Terdaftar!\n");
       digitalWrite(relay, LOW);
-      delay(1000);
-      digitalWrite(relay, HIGH);
+      delay(10000);
     }
 
     // Serial.print(" ID : ");
