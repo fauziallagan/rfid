@@ -34,7 +34,7 @@ int relay = D11;
 // char pass[] = "YOUR_PASSWORD";
 
 // virtual pin untuk LCD
-WidgetLCD lcd(V1);
+// WidgetLCD lcd(V1);
 
 void setup()
 {
@@ -48,8 +48,8 @@ void setup()
   // Serial.println("Dekatkan Tag RFID (Dapat berupa kartu atau gantungan kunci) ke RFID reader");
   Serial.println(" Security System ");
   Serial.println("Tap Your Card!");
-  lcd.print(0, 0, "Security System");
-  lcd.print(1, 0, "Tap Your Card!");
+  // lcd.print(0, 0, "Security System");
+  // lcd.print(1, 0, "Tap Your Card!");
 }
 void loop()
 {
