@@ -39,12 +39,12 @@ int relay = D11;
 void setup()
 {
   // Blynk.begin(auth, ssid, pass); // inisialisasi koneksi wifi
-  pinMode(buzzPin, OUTPUT); // set buzzer sebagai output
+  // pinMode(buzzPin, OUTPUT); // set buzzer sebagai output
   pinMode(relay, OUTPUT);
-  pinMode(vibrationSensorPin, INPUT); // Jadikan Vibration sensor sebagai input
+  // pinMode(vibrationSensorPin, INPUT); // Jadikan Vibration sensor sebagai input
   Serial.begin(9600);
-  SPI.begin();
-  mfrc522.PCD_Init(); // inisialisasi rfid
+  // SPI.begin();
+  //  mfrc522.PCD_Init(); // inisialisasi rfid
   // Serial.println("Dekatkan Tag RFID (Dapat berupa kartu atau gantungan kunci) ke RFID reader");
   Serial.println(" Security System ");
   Serial.println("Tap Your Card!");
@@ -83,27 +83,27 @@ void loop()
   relayTesting();
 }
 
-boolean getID() // fungsi untuk membaca kartu rfid
-{
-  // membaca  PICCs
-  if (!mfrc522.PICC_IsNewCardPresent())
-  { // Jika PICC baru ditempatkan ke pembaca RFID, lanjutkan
-    return false;
-  }
-  if (!mfrc522.PICC_ReadCardSerial())
-  { // Sejak PICC ditempatkan, dapatkan Serial dan lanjutkan
-    return false;
-  }
-  tagID = "";
-  for (uint8_t i = 0; i < 4; i++)
-  { // menggunakan 4 byte UID;
-    // readCard[i] = mfrc522.uid.uidByte[i];
-    tagID.concat(String(mfrc522.uid.uidByte[i], HEX)); // Adds the 4 bytes in a single String variable
-  }
-  tagID.toUpperCase();  // merubah hasil ke huruf kapital
-  mfrc522.PICC_HaltA(); // Stop reading
-  return true;
-}
+// boolean getID() // fungsi untuk membaca kartu rfid
+// {
+//   // membaca  PICCs
+//   if (!mfrc522.PICC_IsNewCardPresent())
+//   { // Jika PICC baru ditempatkan ke pembaca RFID, lanjutkan
+//     return false;
+//   }
+//   if (!mfrc522.PICC_ReadCardSerial())
+//   { // Sejak PICC ditempatkan, dapatkan Serial dan lanjutkan
+//     return false;
+//   }
+//   tagID = "";
+//   for (uint8_t i = 0; i < 4; i++)
+//   { // menggunakan 4 byte UID;
+//     // readCard[i] = mfrc522.uid.uidByte[i];
+//     tagID.concat(String(mfrc522.uid.uidByte[i], HEX)); // Adds the 4 bytes in a single String variable
+//   }
+//   tagID.toUpperCase();  // merubah hasil ke huruf kapital
+//   mfrc522.PICC_HaltA(); // Stop reading
+//   return true;
+// }
 
 /* Alert!
   ================== Wilayah Testing Sensor =======================
@@ -128,7 +128,7 @@ void rfid()
       Serial.println(tagID);
       Serial.println("Selamat Datang\n");
       digitalWrite(relay, HIGH);
-      delay(10000);
+      delay(1000);
     }
     else
     {
@@ -141,13 +141,13 @@ void rfid()
       Serial.println(tagID);
       Serial.println("Kartu Tidak Terdaftar!\n");
       digitalWrite(relay, LOW);
-      delay(10000);
+      delay(1000);
     }
 
     // Serial.print(" ID : ");
     // Serial.println(tagID);
 
-    delay(2000);
+    // delay(2000);
   }
 }
 void vibration()
