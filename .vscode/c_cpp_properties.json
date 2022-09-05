@@ -7,6 +7,7 @@
             "compilerArgs": [
                 "-U__STRICT_ANSI__",
                 "-Wall",
+                "-Wextra",
                 "-Werror=return-type",
                 "-free",
                 "-fipa-pta",
@@ -48,7 +49,7 @@
                 "TCP_MSS=536",
                 "LWIP_FEATURES=1",
                 "LWIP_IPV6=0",
-                "ARDUINO=10814",
+                "ARDUINO=10816",
                 "ARDUINO_ESP8266_WEMOS_D1R1",
                 "ARDUINO_ARCH_ESP8266",
                 "ARDUINO_BOARD=\"ESP8266_WEMOS_D1R1\"",
