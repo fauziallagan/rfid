@@ -4,7 +4,7 @@
 "JUDUL"
 
 # Schematic
-![Logo](https://github.com/fauziallagan/rfid/blob/master/schematic%new.png)
+![Logo](https://github.com/fauziallagan/rfid/blob/master/schematicbaru.png)
 
 ## Documentation
 
